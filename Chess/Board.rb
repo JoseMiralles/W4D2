@@ -47,7 +47,8 @@ class Board
     def render
         rows.each do |row|
             row.each do |square|
-                print square.to_s + " "
+                print square.to_s
+                print " "
             end
             puts
         end
