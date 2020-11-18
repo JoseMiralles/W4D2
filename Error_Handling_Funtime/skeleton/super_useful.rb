@@ -1,6 +1,10 @@
 # PHASE 2
 def convert_to_int(str)
-  Integer(str)
+  begin
+    Integer(str)
+  rescue ArgumentError
+    return nil
+  end
 end
 
 # PHASE 3
@@ -9,35 +13,48 @@ FRUITS = ["apple", "banana", "orange"]
 def reaction(maybe_fruit)
   if FRUITS.include? maybe_fruit
     puts "OMG, thanks so much for the #{maybe_fruit}!"
-  else 
-    raise StandardError 
+  else
+    raise StandardError
   end 
 end
 
 def feed_me_a_fruit
-  puts "Hello, I am a friendly monster. :)"
 
-  puts "Feed me a fruit! (Enter the name of a fruit:)"
-  maybe_fruit = gets.chomp
-  reaction(maybe_fruit) 
+  begin
+    puts "Hello, I am a friendly monster. :)"
+    puts "Feed me a fruit! (Enter the name of a fruit:)"
+    maybe_fruit = gets.chomp
+    reaction(maybe_fruit)
+  rescue
+    if maybe_fruit == "coffee"
+      puts "I like coffee, but that isn't a fruit."
+      retry
+    else
+      puts "That wasn't what I wanted."
+    end
+  end
+
 end  
 
 # PHASE 4
 class BestFriend
   def initialize(name, yrs_known, fav_pastime)
+    raise "Enter your name." if name == ""
+    raise "We've known each other for less than 5 years." if yrs_known < 5
+    raise "Enter your favorite pastime." if fav_pastime == ""
     @name = name
     @yrs_known = yrs_known
     @fav_pastime = fav_pastime
   end
-
+  
   def talk_about_friendship
     puts "Wowza, we've been friends for #{@yrs_known}. Let's be friends for another #{1000 * @yrs_known}."
   end
-
+  
   def do_friendstuff
     puts "Hey bestie, let's go #{@fav_pastime}. Wait, why don't you choose. 😄"
   end
-
+  
   def give_friendship_bracelet
     puts "Hey bestie, I made you a friendship bracelet. It says my name, #{@name}, so you never forget me." 
   end
