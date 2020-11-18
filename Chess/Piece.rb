@@ -3,8 +3,10 @@ class Piece
 
     attr_reader :color
 
-    def initialize(color = nil)
+    def initialize(color = nil, board, pos)
         @color = color
+        @board = board
+        @pos = pos
     end
 
     def to_s
