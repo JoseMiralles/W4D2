@@ -7,12 +7,14 @@ class Piece
         @color = color
         @board = board
         @pos = pos
+        
+        c = :blue if self.color == :white
+        c = :red if self.color == :black
+        @c = c
     end
 
     def to_s
-        c = :blue if self.color == :white
-        c = :red if self.color == :black
-        "P".colorize(c)
+        "P".colorize(@c)
     end
 
 end

@@ -11,7 +11,7 @@ class King < Piece
     end
 
     def to_s
-        return :K
+        return "♚".colorize(@c)
     end
 
 end

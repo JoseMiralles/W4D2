@@ -18,8 +18,6 @@ class Knight < Piece
     end
 
     def to_s
-        c = :blue if self.color == :white
-        c = :red if self.color == :black
-        "N".colorize(c)
+        "♞".colorize(@c)
     end
 end
