@@ -12,15 +12,17 @@ class Board
     end
 
     def set_pieces
+        # Fill top two rows with black pieces
         rows[0..1].map! do |row|
             row.map! do |square|
-                Piece.new
+                Piece.new(:black)
             end
             row
         end
+        # Fill bottom two rows with white pieces
         rows[-2..-1].map! do |row|
             row.map! do |square|
-                Piece.new
+                Piece.new(:white)
             end
             row
         end
@@ -46,6 +48,7 @@ class Board
         raise "No piece in selected position!" if self[start_pos] == @null_piece
         is_out = end_pos[0] < 0 || end_pos[0] > 7 || end_pos[1] < 0 || end_pos[1] > 7
         raise "Can't move to end position!" if is_out
+        raise "Can't attack own pieces!" if self[end_pos].color == self[start_pos].color
 
         piece = self[start_pos]
         self[start_pos] = @null_piece
@@ -67,7 +70,9 @@ end
 
 board = Board.new()
 board.render
-board.move_piece([1,0], [, 7])
+board.move_piece([0,0], [3, 0])
+board.move_piece([0,3], [4, 3])
+board.move_piece([1,3], [3, 6])
 board.render
 # board.move_piece([4, 5], [0, 0])
 # board.render

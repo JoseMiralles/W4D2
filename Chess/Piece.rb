@@ -1,7 +1,10 @@
 require "singleton"
 class Piece
 
-    def initialize
+    attr_reader :color
+
+    def initialize(color = nil)
+        @color = color
     end
 
     def to_s
@@ -13,11 +16,10 @@ end
 class NullPiece < Piece
     include Singleton 
 
-    def initialize
-
+    def initialize()
     end
 
     def to_s
-        "_"
+        "-"
     end
 end
