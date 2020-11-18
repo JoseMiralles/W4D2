@@ -5,15 +5,19 @@ module Slidable
     end
 
     def grow_unblocked_moves_in_dir(x, y)
-        new_x = @pos[0]
-        new_y = @pos[1]
+        new_x = x
+        new_y = y
         result = []
+
+        # While new_x and new_y are in bounds
         while new_x <= 7 && new_x >=0 && new_y <= 7 && new_y >=0
+            # Calculate the new move
             move = [ (new_x + @pos[0]) , (new_y + @pos[1]) ]
-            if @board[[new_x,new_y]].color != nil && @board[[new_x,new_y]].color != self.color
+            # Check if this is an enemy piece.
+            if @board[move].color != nil && @board[move].color != self.color
                 result << move
                 break
-            elsif @board[[new_x,new_y]].color == self.color
+            elsif @board[move].color == self.color
                 break
             else
                 result << move

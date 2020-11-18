@@ -11,7 +11,7 @@ board[[3,2]] = knight
 board[[5,2]] = king
 board[[5,1]] = rook
 
-rook.grow_unblocked_moves_in_dir(-1, -1)
+p rook.grow_unblocked_moves_in_dir(0,0)
 board.render
 
 p knight.moves
