@@ -17,14 +17,12 @@ class Board
             row.each_with_index do |square, idx_2|
                 self[[idx_1, idx_2]] =  Piece.new(:black, self, [idx_1, idx_2])
             end
-            row
         end
         # Fill bottom two rows with white pieces
-        rows[-2..-1].each_with_index do |row, idx1|
-            row.each_with_index do |square, idx2|
+        (6..7).each do |idx1|
+            (0..7).each do |idx2|
                 self[[idx1, idx2]] =  Piece.new(:white, self, [idx1, idx2])
             end
-            row
         end
         
         rows[2...-2].map! do |row|
