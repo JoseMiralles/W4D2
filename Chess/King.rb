@@ -10,6 +10,8 @@ class King < Piece
                  [1, -1], [1, 0], [1, 1] ]
     end
 
-end
+    def to_s
+        return :K
+    end
 
-p King.new(nil ,nil ,[0,0]).moves
+end

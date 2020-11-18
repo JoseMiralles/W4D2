@@ -8,7 +8,6 @@ class Board
         @rows = Array.new(8) { Array.new(8) }
         @null_piece = NullPiece.instance
         self.set_pieces
-
     end
 
     def set_pieces
@@ -33,11 +32,11 @@ class Board
     end
 
     def [](pos)
-        @rows[pos[0]][pos[1]]
+        self.rows[pos[0]][pos[1]]
     end
 
     def []=(pos, val)
-        @rows[pos[0]][pos[1]] = val
+        self.rows[pos[0]][pos[1]] = val
     end
 
     def move_piece(start_pos, end_pos)
@@ -53,10 +52,11 @@ class Board
         self[end_pos] = piece
     end
 
+    # Prints board
     def render
         rows.each_with_index do |row, idx1|
-            row.each_with_index do |square, idx2|
-                print square.to_s
+            row.each_with_index do |piece, idx2|
+                print piece.to_s
                 print " "
             end
             puts
@@ -65,12 +65,3 @@ class Board
     end
 
 end
-
-board = Board.new()
-board.render
-board.move_piece([0,0], [3, 0])
-board.move_piece([0,3], [4, 3])
-board.move_piece([1,3], [3, 6])
-board.render
-# board.move_piece([4, 5], [0, 0])
-# board.render
