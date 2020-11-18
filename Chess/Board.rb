@@ -32,7 +32,7 @@ class Board
     end
 
     def [](pos)
-        self.rows[pos[0]][pos[1]]
+        @rows[pos[0]][pos[1]]
     end
 
     def []=(pos, val)
@@ -56,6 +56,7 @@ class Board
     def render
         rows.each_with_index do |row, idx1|
             row.each_with_index do |piece, idx2|
+                print " "
                 print piece.to_s
                 print " "
             end

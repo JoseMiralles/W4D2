@@ -10,7 +10,9 @@ class Piece
     end
 
     def to_s
-        :P
+        c = :blue if self.color == :white
+        c = :red if self.color == :black
+        "P".colorize(c)
     end
 
 end
